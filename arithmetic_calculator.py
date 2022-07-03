@@ -1,3 +1,8 @@
+# This program show basic addition and subtraction
+
+# This program takes argument in list format 
+# Items inside the list must be a string
+# e.g. ["1 + 2", "5 - 3", "4 + 6"]
 
 def arithmetic_arranger(num):
     top = []
@@ -10,6 +15,12 @@ def arithmetic_arranger(num):
         signs.append(nums[1])
         bottom.append(nums[2])
 
+    # It shows error if:    
+    # items in list are more than 5
+    # operation is other than addition and subtraction
+    # length of values must be smaller than 4
+    # arithmetic operation performed on other than integer
+    
     if len(top) > 5:
         print("Error: Too many problems.")
         exit()
@@ -51,6 +62,3 @@ def arithmetic_arranger(num):
             print(f"{int(top[i]) + int(bottom[i]):>{space_between}}", end="    ")
         else:
             print(f"{int(top[i]) - int(bottom[i]):>{space_between}}", end="    ")
-
-
-arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49", "12 + 33"])
