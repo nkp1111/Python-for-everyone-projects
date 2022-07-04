@@ -1,2 +1,1 @@
-
-arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49", "12 + 33"])
+https://replit.com/@nkp1111/boilerplate-arithmetic-formatter-1#test_module.py
