@@ -52,3 +52,4 @@ def arithmetic_arranger(problems, answer=False):
         arranged_problems += "\n" + fourth_line.rstrip()
 
     return arranged_problems
+
