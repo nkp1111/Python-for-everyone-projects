@@ -4,61 +4,51 @@
 # Items inside the list must be a string
 # e.g. ["1 + 2", "5 - 3", "4 + 6"]
 
-def arithmetic_arranger(num):
-    top = []
-    signs = []
-    bottom = []
+def arithmetic_arranger(problems, answer=False):
+    num = len(problems)
+    problem_set = []
 
-    for num1 in num:
-        nums = num1.split()
-        top.append(nums[0])
-        signs.append(nums[1])
-        bottom.append(nums[2])
+    if num > 5:
+        return "Error: Too many problems."
 
-    # It shows error if:    
-    # items in list are more than 5
-    # operation is other than addition and subtraction
-    # length of values must be smaller than 4
-    # arithmetic operation performed on other than integer
-    
-    if len(top) > 5:
-        print("Error: Too many problems.")
-        exit()
+    for i in range(len(problems)):
+        element = problems[i].split()
+        problem_set.append(element)
 
-    for i in range(len(top)):
+    for i in range(num):
+        if problem_set[i][1] not in ["+", "-"]:
+            return "Error: Operator must be '+' or '-'."
 
-        if signs[i] not in ["+", "-"]:
-            print(" Error: Operator must be '+' or '-'.")
-            exit()
-
-        if len(top[i]) > 4 or len(bottom[i]) > 4:
-            print("Error: Numbers cannot be more than four digits.")
-            exit()
+        if len(problem_set[i][0]) > 4 or len(problem_set[i][2]) > 4:
+            return "Error: Numbers cannot be more than four digits."
 
         try:
-            int(top[i]), int(bottom[i])
+            if int(problem_set[i][0]) and int(problem_set[i][2]):
+                continue
         except ValueError:
-            print("Error: Numbers must only contain digits.")
-            exit()
+            return "Error: Numbers must only contain digits."
 
-    for i in range(len(top)):
-        space_between = max(len(top[i]), len(bottom[i])) + 2
-        print(f"{(top[i]):>{space_between}}", end="    ")
-    print()
+    first_line = ""
+    second_line = ""
+    third_line = ""
+    fourth_line = ""
+    area_between_problem = "    "
 
-    for i in range(len(top)):
-        space_between = max(len(top[i]), len(bottom[i])) + 1 - len(bottom[i])
-        text = signs[i] + space_between * " " + bottom[i]
-        print(f"{text}", end="    ")
-    print()
+    for i in range(num):
+        max_len = max(len(problem_set[i][0]), len(problem_set[i][2]))
+        space_cover = max_len + 2
+        first_line += f"{problem_set[i][0]:>{space_cover}}" + area_between_problem
+        space_between = max_len + 1 - len(problem_set[i][2])
+        second_line += problem_set[i][1] + " " * space_between + problem_set[i][2] + area_between_problem
+        third_line += "-" * (max_len + 2) + area_between_problem
 
-    for i in range(len(top)):
-        print("_" * (max(len(top[i]), len(bottom[i])) + 2), end="    ")
-    print()
-
-    for i in range(len(top)):
-        space_between = max(len(top[i]), len(bottom[i])) + 2
-        if signs[i] == "+":
-            print(f"{int(top[i]) + int(bottom[i]):>{space_between}}", end="    ")
+        if problem_set[i][1] == "+":
+            fourth_line += f"{int(problem_set[i][0]) + int(problem_set[i][2]):>{space_cover}}" + area_between_problem
         else:
-            print(f"{int(top[i]) - int(bottom[i]):>{space_between}}", end="    ")
+            fourth_line += f"{int(problem_set[i][0]) - int(problem_set[i][2]):>{space_cover}}" + area_between_problem
+
+    arranged_problems = first_line.rstrip() + "\n" + second_line.rstrip() + "\n" + third_line.rstrip()
+    if answer is not False:
+        arranged_problems += "\n" + fourth_line.rstrip()
+
+    return arranged_problems
