@@ -9,3 +9,6 @@ Assignment 3 : Budgeet_app
 
 Assignment 4 : Shape_calculator
   https://replit.com/@nkp1111/boilerplate-polygon-area-calculator#shape_calculator.py
+  
+Assignment 5 :  Probability_calculator
+  https://replit.com/@nkp1111/boilerplate-probability-calculator#prob_calculator.py
