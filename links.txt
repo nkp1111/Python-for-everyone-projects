@@ -6,3 +6,6 @@ Assignment 2 : Time_calculator
 
 Assignment 3 : Budgeet_app
   https://replit.com/@nkp1111/boilerplate-budget-app#budget.py
+
+Assignment 4 : Shape_calculator
+  https://replit.com/@nkp1111/boilerplate-polygon-area-calculator#shape_calculator.py
