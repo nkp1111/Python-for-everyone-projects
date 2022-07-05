@@ -3,3 +3,6 @@ Assignment 1 : Arithmetic_caluculator
 
 Assignment 2 : Time_calculator
   https://replit.com/@nkp1111/boilerplate-time-calculator-1#time_calculator.py
+
+Assignment 3 : Budgeet_app
+  https://replit.com/@nkp1111/boilerplate-budget-app#budget.py
