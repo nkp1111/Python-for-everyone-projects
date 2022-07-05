@@ -57,8 +57,58 @@ class Category:
       amount = float(amount)
       
     total_text = "Total: " + str(total)
-    display += total_text + "\n"
+    display += total_text
     return display
+
+  def __repr__(self):
+    return self.__str__()
     
 def create_spend_chart(categories):
-  pass
+  display = "Percentage spent by category\n"
+  percent_list = [None] * (len(categories) * 2 + 1)
+  
+  
+  categories_name = []
+  amounts = []
+  for category in categories:
+    
+    categories_name.append(category.name)
+    amount_used = 0
+    
+    for i in category.ledger:
+      if i["amount"] < 0 and not i["description"].startswith("Transfer"):
+        amount_used += i["amount"]
+      
+    amounts.append(amount_used)
+  start = 1
+  for amount in amounts:
+    amount_uses = amount * 10 / sum(amounts)
+    percent_list.insert(start, int(amount_uses))
+    start += 3
+  
+  for i in range(10, -1, -1):
+    value = str(10 * i) + "|" 
+    value = f"{value:>4}"
+    for j in percent_list:
+      if j is not None:
+        if j >= i:
+          value += "o"
+        else:
+          value += " "
+      else:
+        value += " "
+    display += value + "\n"
+  display += " " * 4 + "-" * (len(categories) * 3 + 1) 
+
+  for j in range(max([len(i) for i in categories_name])):
+    name_text = "\n" + " " * 5
+    for i in range(len(categories)):
+      try:
+        name_text += categories_name[i][j] + " " * 2
+      except:
+        name_text += " " * 3
+        continue
+
+    display += name_text
+  
+  return display
