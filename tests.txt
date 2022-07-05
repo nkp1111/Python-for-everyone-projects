@@ -9,3 +9,6 @@ Budget_app:
 
 Shape_calculator
   https://replit.com/@nkp1111/boilerplate-polygon-area-calculator#test_module.py
+  
+Probability Calculator
+  https://replit.com/@nkp1111/boilerplate-probability-calculator#test_module.py
