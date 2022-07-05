@@ -66,20 +66,18 @@ class Category:
 def create_spend_chart(categories):
   display = "Percentage spent by category\n"
   percent_list = [None] * (len(categories) * 2 + 1)
-  
-  
   categories_name = []
   amounts = []
+  
   for category in categories:
-    
     categories_name.append(category.name)
     amount_used = 0
     
     for i in category.ledger:
       if i["amount"] < 0 and not i["description"].startswith("Transfer"):
-        amount_used += i["amount"]
-      
+        amount_used += i["amount"]  
     amounts.append(amount_used)
+    
   start = 1
   for amount in amounts:
     amount_uses = amount * 10 / sum(amounts)
@@ -98,6 +96,7 @@ def create_spend_chart(categories):
       else:
         value += " "
     display += value + "\n"
+    
   display += " " * 4 + "-" * (len(categories) * 3 + 1) 
 
   for j in range(max([len(i) for i in categories_name])):
@@ -108,7 +107,6 @@ def create_spend_chart(categories):
       except:
         name_text += " " * 3
         continue
-
     display += name_text
   
   return display
